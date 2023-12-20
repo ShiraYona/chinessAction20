@@ -1,0 +1,82 @@
+
+
+
+
+<p>raffle works!</p>
+<p-toolbar class="my-toolbar" styleClass="mb-4">
+    
+    <ng-template pTemplate="center">
+        <h1>ChinessAction</h1>
+        <!-- <h1>{{giftService.reloadGifts$ | async}}</h1>  -->
+    </ng-template>
+    
+</p-toolbar>
+
+<div class="my-css">
+    <p-table #dt [value]="gifts" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['name','category','representative.name','status']" [(selection)]="selectedGifts"
+        [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Manage Gifts</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                    <!-- <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')"
+                        placeholder="Search..." /> -->
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 2rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="donor">Donor <p-sortIcon field="donor"></p-sortIcon></th>
+                <th pSortableColumn="cost">Cost <p-sortIcon field="cost"></p-sortIcon></th>
+                <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-gift>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="gift"></p-tableCheckbox>
+                </td>
+                <td>{{gift.id}}</td>
+                <td>{{gift.name}}</td>
+                <td>{{gift.donor}}</td>
+                <td>{{gift.cost}}</td>
+                <td>{{gift.description}}</td>
+                <td>{{gift.image}}</td>
+                <td>
+                    <button pButton pRipple class="p-button-rounded p-button-success mr-2"
+                        (click)="randome(gift)"></button>
+                   
+                </td>
+                <!-- icon="pi pi-spin pi-spinner" -->
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{gifts ? gifts.length : 0 }} gifts.
+            </div>
+        </ng-template>
+    </p-table>
+</div>
+
+<div  *ngIf="flag">
+<div *ngFor="let x of winners">
+   
+<div>{{x.userName}}</div>
+<div>{{x.giftId}}</div>
+<div>{{x.giftName}}</div>
+<div>{{x.giftImage}}</div>
+    
+</div></div>
+<p-confirmDialog [style]="{width: '450px'}"></p-confirmDialog>
+
+
+

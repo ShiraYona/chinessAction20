@@ -1,0 +1,162 @@
+
+
+
+
+
+
+<!-- 
+<p>cart-list</p>
+<p-toolbar class="my-toolbar" styleClass="mb-4">
+    <ng-template pTemplate="left">
+       
+
+    </ng-template>
+    <ng-template pTemplate="center">
+        <h1>ChinessAction</h1>
+    </ng-template>
+    <ng-template pTemplate="right">
+        <h3>{{count}}</h3>
+
+        <button (click)="placeOrder()"  pButton pRipple label="Place Order" icon="pi p-confirmDialog" class="p-button-help"></button>
+        <button (click)="ContinueShopping()"  pButton pRipple label="Continue shopping " icon="pi p-confirmDialog" class="p-button-help"></button>
+
+    </ng-template>
+</p-toolbar>
+<div class="my-css">
+    <p-table #dt [value]="cart" [rows]="5" [paginator]="true"
+        [globalFilterFields]="['name','category','representative.name','status']" [(selection)]="selectedGifts"
+        [rowHover]="true" dataKey="id" currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [showCurrentPageReport]="true">
+        <ng-template pTemplate="caption">
+            <div class="flex align-items-center justify-content-between">
+                <h5 class="m-0">Manage Cart</h5>
+                <span class="p-input-icon-left">
+                    <i class="pi pi-search"></i>
+                   
+                </span>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="header">
+            <tr>
+                <th style="width: 2rem">
+                    <p-tableHeaderCheckbox></p-tableHeaderCheckbox>
+                </th>
+                <th pSortableColumn="id">Id <p-sortIcon field="id"></p-sortIcon></th>
+                <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+                <th pSortableColumn="donor">Donor <p-sortIcon field="donor"></p-sortIcon></th>
+                <th pSortableColumn="cost">Cost <p-sortIcon field="cost"></p-sortIcon></th>
+                <th pSortableColumn="description">Description <p-sortIcon field="description"></p-sortIcon></th>
+                <th pSortableColumn="image">Image <p-sortIcon field="image"></p-sortIcon></th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-gift>
+            <tr>
+                <td>
+                    <p-tableCheckbox [value]="gift"></p-tableCheckbox>
+                </td>
+                <td>{{gift.id}}</td>
+                <td>{{gift.name}}</td>
+                <td>{{gift.donor.name}}</td>
+                <td>{{gift.cost}}</td>
+                <td>{{gift.description}}</td>
+                <td>{{gift.image}}</td>
+                <td>
+                    
+                    <button (click)="deleteItem(gift)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                       ></button> 
+                </td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="summary">
+            <div class="flex align-items-center justify-content-between">
+                In total there are {{cart ? cart.length : 0 }} gifts.
+            </div>
+        </ng-template>
+    </p-table>
+  
+</div>
+<router-outlet></router-outlet> -->
+
+<body>
+    <button (click)="placeOrder()"  pButton pRipple label="Place Order" icon="pi p-confirmDialog" class="p-button-help"></button>
+    <button (click)="ContinueShopping()"  pButton pRipple label="Continue shopping " icon="pi p-confirmDialog" class="p-button-help"></button>
+    <h3>{{count}}</h3>
+<div>{{total}}</div>
+<!-- 
+    <div style="  background-color: rgba(128, 128, 128, 0.5);; width: 25vw;margin-left: 40vw;">
+
+        <div class="cart-items" style="display: grid;">
+            <div class="item" *ngFor="let item of cart">
+                <img [src]="'assets/images/' + item.description" alt="Product">
+                <h2>{{ item.name }}</h2>
+                <p>{{ item.cost | currency }}</p>
+                <button (click)="deleteItem(gift)" pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning"
+                       ></button> 
+            </div>
+        </div>
+    </div> -->
+    <!-- <div style="width: 100%; height: 100%; position: relative; background: white">
+        <div style="width: 1440px; height: 89px; left: 0px; top: 0px; position: absolute; background: #211C1C"></div>
+        <div style="left: 119px; top: 182px; position: absolute; color: black; font-size: 48px; font-family: Rubik; font-weight: 500; word-wrap: break-word">MY CART</div>
+        <div style="width: 1199px; height: 178px; left: 119px; top: 778px; position: absolute; background: #F0F0F0; border-radius: 27.91px"></div>
+        <div style="width: 201.11px; height: 27.20px; left: 923px; top: 902px; position: absolute; background: #FF5E6B; border-radius: 6.44px"></div>
+        <div style="width: 15.03px; height: 14.31px; left: 166px; top: 862px; position: absolute; border-radius: 9999px; border: 0.72px #A4A4A4 solid"></div>
+        <div style="width: 160px; height: 0px; left: 973px; top: 838px; position: absolute; border: 0.50px black solid"></div>
+        <div style="width: 160px; height: 0px; left: 973px; top: 870px; position: absolute; border: 0.50px black solid"></div>
+        <div style="width: 8px; height: 0px; left: 764px; top: 432px; position: absolute; border: 1px black solid"></div>
+        <div style="width: 8px; height: 0px; left: 763px; top: 616px; position: absolute; border: 1px black solid"></div>
+        <div style="width: 16px; height: 18px; left: 1171px; top: 609px; position: absolute; border: 1.50px #FF0202 solid"></div>
+        <div style="left: 195px; top: 857px; position: absolute; color: #878787; font-size: 16px; font-family: Heebo; font-weight: 300; word-wrap: break-word">Express delivery up to three days</div>
+        <div style="left: 195px; top: 897px; position: absolute; color: black; font-size: 16px; font-family: Heebo; font-weight: 300; word-wrap: break-word">Standard delivery up to 14 business days</div>
+        <div style="left: 166px; top: 806px; position: absolute; color: black; font-size: 24px; font-family: Heebo; font-weight: 400; word-wrap: break-word">Order details</div>
+        <div style="left: 893px; top: 823px; position: absolute; color: #666565; font-size: 14px; font-family: Heebo; font-weight: 300; word-wrap: break-word">Smart bottle</div>
+        <div style="left: 893px; top: 855px; position: absolute; color: #666565; font-size: 14px; font-family: Heebo; font-weight: 300; word-wrap: break-word">Pink bottle</div>
+        <div style="left: 973px; top: 905px; position: absolute; color: #211F1F; font-size: 14px; font-family: Heebo; font-weight: 400; word-wrap: break-word">Closing an order</div>
+        <div style="left: 1136px; top: 823px; position: absolute; color: black; font-size: 14px; font-family: Heebo; font-weight: 400; word-wrap: break-word">68$</div>
+        <div style="left: 1136px; top: 855px; position: absolute; color: black; font-size: 14px; font-family: Heebo; font-weight: 400; word-wrap: break-word">68$</div>
+        <div style="width: 1440px; height: 39px; left: 0px; top: 89px; position: absolute; background: #FD3344"></div>
+        <img style="width: 31px; height: 31px; left: 65px; top: 34px; position: absolute; box-shadow: 0px 0px 5px 2px rgba(0, 0, 0, 0.25) inset; border-radius: 9999px" src="https://via.placeholder.com/31x31" />
+        <div style="width: 89.26px; height: 18px; left: 1310px; top: 34px; position: absolute">
+            <div style="width: 19.26px; height: 16.45px; left: 70px; top: 0px; position: absolute; background: #FF7171; border: 1px solid"></div>
+            <div style="width: 19.20px; height: 17.88px; left: 0px; top: 0px; position: absolute; border: 1px white solid"></div>
+            <div style="width: 16px; height: 18px; left: 38px; top: 0px; position: absolute; border: 1px white solid"></div>
+            <div style="width: 7px; height: 7px; left: 50px; top: 11px; position: absolute; background: #7371FF; border-radius: 9999px"></div>
+            <div style="width: 7px; height: 7px; left: 16px; top: 11px; position: absolute; background: #DA71FF; border-radius: 9999px"></div>
+            <div style="width: 2px; height: 5px; left: 52px; top: 12px; position: absolute; text-align: right; color: black; font-size: 4px; font-family: Rubik; font-weight: 400; word-wrap: break-word">1</div>
+            <div style="width: 2.04px; height: 2.84px; left: 18.77px; top: 13.20px; position: absolute; background: black"></div>
+        </div>
+    </div> -->
+</body>
+
+
+<!-- <div style="margin-left: 70vw; width: vw; background-color: aqua;padding-top: 5vw; height: 60vh;"> -->
+
+<!-- </div> -->
+
+<div *ngFor="let item of cart">
+
+<div style="left: 10vw; top: 13vw; position: absolute; color: black; font-size: 1.5vw; font-family: Heebo; ">product</div>
+<!-- <div style="left: 825px;color: black; font-size: 15px; font-family: Heebo; font-weight: 400; word-wrap: break-word">+</div>
+<br><br>
+<div style="left: 20vw;  color: #7A7A7A; font-size: 15px; font-family: Heebo; font-weight: 300; word-wrap: break-word">4</div> -->
+<br><br>
+<div style="left: 30vw; top: 13vw; position: absolute; color: black; font-size: 1.5vw; font-family: Heebo;">price</div>
+<div style="left: 50vw; top: 13vw; position: absolute; color: black; font-size:1.5vw ; font-family: Heebo; ">Amount</div>
+<div (click)="QuentityPlus(item)">+</div>
+<div >{{item.quentity}}</div>
+<div (click)="QuentityMinus(item)">-</div>
+
+<div style="left: 1144px; top: 13vw; position: absolute; color: black; font-size:1.5vw ; font-family: Heebo;  ">deletion</div>
+<div style="width: 75vw;margin-left: 10vw; height: 0px; left: 127px;  border: 0.50px #AFAFAF solid"></div>
+<br>
+<img  [src]="'assets/images/' + item.image"  style="width: 15vw; height: 25vh;  border-radius: 4px;margin-left: 7vw;"  >
+<div style="left: 433px;margin-left: 30vw ; color: #7A7A7A; font-size: 15px; font-family: Heebo; ">{{item.cost}}</div>
+<img  [src]="'assets/images/Icon (16).svg'" style="margin-left: 70vw;" (click)="deleteItem(item)"> 
+</div>
+
+
+
+
+
+
+
